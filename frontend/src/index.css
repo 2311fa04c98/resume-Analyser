@@ -1,0 +1,306 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+:root {
+  --primary-gradient: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+  --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Glowing CareerAI Text Animation */
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 
+      0 0 10px rgba(59, 130, 246, 0.5),
+      0 0 20px rgba(147, 51, 234, 0.3),
+      0 0 30px rgba(236, 72, 153, 0.2);
+  }
+  50% {
+    text-shadow: 
+      0 0 20px rgba(59, 130, 246, 0.8),
+      0 0 30px rgba(147, 51, 234, 0.6),
+      0 0 40px rgba(236, 72, 153, 0.4);
+  }
+}
+
+.glow-text {
+  animation: glow 3s ease-in-out infinite;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f9fafb;
+  color: #1f2937;
+  font-family: inherit;
+  /* Optimize for mobile touch scrolling */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+  /* Hardware acceleration for smoother scrolling */
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: auto;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  /* Better tap behavior on mobile */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+  /* Optimize for mobile rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Smooth scrolling behavior */
+  scroll-padding-top: 80px;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #8b5cf6 0%, #db2777 100%);
+}
+
+/* Gradient Text */
+.gradient-text {
+  @apply bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent;
+}
+
+/* Button Styles */
+.btn-gradient {
+  @apply bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold hover:shadow-lg transition-all duration-300 hover:scale-105;
+}
+
+/* Card Shadow */
+.card-shadow {
+  box-shadow: var(--card-shadow);
+}
+
+/* Glassmorphism Card */
+.glassmorphism-card {
+  background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Glass Button */
+.btn-glass {
+  @apply bg-white/70 text-gray-900 border border-white/60 backdrop-blur rounded-lg;
+}
+
+/* Danger Button */
+.btn-danger {
+  @apply bg-red-600 text-white hover:bg-red-700;
+}
+
+/* Roadmap path animations */
+.dash-animate {
+  stroke-dasharray: 20 12;
+  animation: dashMove 8s linear infinite;
+}
+
+.road-glow {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+}
+
+@keyframes dashMove {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -400;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-12deg);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s ease-in-out;
+}
+
+/* Responsive Utilities */
+@layer utilities {
+  .text-responsive {
+    @apply text-sm sm:text-base lg:text-lg;
+  }
+  
+  .heading-responsive {
+    @apply text-2xl sm:text-3xl lg:text-4xl;
+  }
+  
+  .container-responsive {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Mobile-first breakpoints */
+@media (max-width: 640px) {
+  .card-shadow {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  }
+  
+  .glassmorphism-card {
+    padding: 1rem;
+  }
+}
+
+/* Ensure no horizontal scroll on mobile */
+body, html {
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
+}
+
+/* Prevent mobile bounce/overscroll */
+body {
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Container max widths for mobile */
+.container {
+  max-width: 100%;
+}
+
+/* Touch-friendly button sizing */
+@media (max-width: 768px) {
+  button, a.btn-gradient, a.btn-glass {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Reduce font sizes on very small screens */
+  h1 {
+    font-size: 1.875rem !important; /* 30px */
+  }
+  
+  h2 {
+    font-size: 1.5rem !important; /* 24px */
+  }
+  
+  h3 {
+    font-size: 1.25rem !important; /* 20px */
+  }
+}
+
+/* Mobile responsive utilities */
+@media (max-width: 640px) {
+  .hidden-mobile {
+    display: none !important;
+  }
+  
+  .full-width-mobile {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Reduce padding on mobile */
+  .dashboard-container {
+    padding: 0.75rem !important;
+  }
+  
+  /* Stack charts vertically on mobile */
+  .chart-container {
+    width: 100% !important;
+  }
+  
+  /* DISABLE ALL ANIMATIONS ON MOBILE - Prevent flickering */
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  
+  /* Allow only opacity transitions for smooth UI */
+  button, a {
+    transition: opacity 0.15s ease !important;
+  }
+  
+  /* Disable backdrop blur on mobile - performance issue */
+  .backdrop-blur-xl,
+  .backdrop-blur-lg,
+  .backdrop-blur-md,
+  .backdrop-blur-sm,
+  .backdrop-blur {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  /* Remove shadows that cause rendering issues */
+  .shadow-2xl,
+  .shadow-xl {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    padding: 1rem;
+  }
+}
